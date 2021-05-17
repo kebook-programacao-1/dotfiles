@@ -1,3 +1,5 @@
+zstyle ':znap:*' repos-dir ~/.zsh$'\233'snap/plugins
+source ~/.zsh-snap/znap.zsh
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -104,6 +106,8 @@ alias ll="exa -l --icons"
 alias history="history | peco"
 alias speedtest="curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -"
 alias shouldideploytoday="curl -s https://shouldideploy.today/api\?tz\=UTC | jq -r '.message'"
+alias vim="nvim"
+alias tg="ctags -R --exclude=.git --exclude=node_modules --exclude=vendor --exclude=storage >> /dev/null"
 #
 #
 export PATH=/home/kebook/.config/composer/vendor/bin:$PATH

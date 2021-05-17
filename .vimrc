@@ -18,6 +18,7 @@ set showmode                    "Show current mode down the bottom
 set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
+set foldmethod=manual
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
@@ -124,6 +125,8 @@ xnoremap "+y y:call system("wl-copy", @")<cr>
 nnoremap "+p :let @"=substitute(system("wl-paste --no-newline"), '<C-v><C-m>', '', 'g')<cr>p
 nnoremap "*p :let @"=substitute(system("wl-paste --no-newline --primary"), '<C-v><C-m>', '', 'g')<cr>p
 
+let g:python3_host_prog="/usr/bin/python"
+
 " Specify a directory for plugins
 " " - For Neovim: stdpath('data') . '/plugged'
 " " - Avoid using standard Vim directory names like 'plugin'
@@ -131,13 +134,33 @@ call plug#begin('~/.vim/plugged')
 
 set laststatus=2
 
-let g:lightline = { 'colorscheme': 'jellybeans' }
+" let g:lightline = { 'colorscheme': 'jellybeans' }
+let g:lightline = { 'colorscheme': 'dracula' }
+
+packadd! dracula
+colorscheme dracula
 
 Plug 'itchyny/lightline.vim'
 " Plug 'elixir-editors/vim-elixir'
 " Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
+Plug 'ternjs/tern_for_vim', { 'do' : 'npm install'  }
+Plug 'jwalton512/vim-blade'
 Plug 'craigemery/vim-autotag'
 Plug 'jiangmiao/auto-pairs'
 Plug 'shawncplus/phpcomplete.vim'
+Plug 'preservim/nerdtree'
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+set completeopt=noinsert,menuone,noselect
+autocmd BufEnter * call ncm2#enable_for_buffer()
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+Plug 'phpactor/phpactor'
+Plug 'phpactor/ncm2-phpactor'
+Plug 'vim-vdebug/vdebug'
+Plug 'tobyS/pdv'
+Plug 'tobyS/vmustache'
+Plug 'neomake/neomake'
+Plug 'mhinz/vim-signify', { 'branch': 'legacy'  }
 
 call plug#end()
